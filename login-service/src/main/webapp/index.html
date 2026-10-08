@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Servicio Web - Registro e Inicio de Sesion</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 420px; margin: 40px auto; }
+        fieldset { margin-bottom: 25px; padding: 15px; }
+        input { display: block; margin: 8px 0; padding: 6px; width: 100%; box-sizing: border-box; }
+        button { padding: 8px 16px; cursor: pointer; }
+        .resultado { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>AA5-EV01 - Servicio web de Registro y Login</h2>
+
+    <fieldset>
+        <legend>Registro de usuario</legend>
+        <input type="text" id="regUsuario" placeholder="Usuario">
+        <input type="password" id="regContrasena" placeholder="Contrasena">
+        <input type="email" id="regCorreo" placeholder="Correo (opcional)">
+        <button onclick="registrar()">Registrar</button>
+        <div class="resultado" id="resultadoRegistro"></div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Inicio de sesion</legend>
+        <input type="text" id="loginUsuario" placeholder="Usuario">
+        <input type="password" id="loginContrasena" placeholder="Contrasena">
+        <button onclick="login()">Iniciar sesion</button>
+        <div class="resultado" id="resultadoLogin"></div>
+    </fieldset>
+
+    <p><em>Usuario de prueba precargado: usuario = admin / contrasena = admin123</em></p>
+
+    <script>
+        // Funcion que envia los datos de registro al servlet mediante POST
+        function registrar() {
+            const params = new URLSearchParams();
+            params.append('usuario', document.getElementById('regUsuario').value);
+            params.append('contrasena', document.getElementById('regContrasena').value);
+            params.append('correo', document.getElementById('regCorreo').value);
+
+            fetch('RegistroServlet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: params
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('resultadoRegistro').innerText = data.mensaje;
+            })
+            .catch(err => console.error(err));
+        }
+
+        // Funcion que envia las credenciales de login al servlet mediante POST
+        function login() {
+            const params = new URLSearchParams();
+            params.append('usuario', document.getElementById('loginUsuario').value);
+            params.append('contrasena', document.getElementById('loginContrasena').value);
+
+            fetch('LoginServlet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: params
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('resultadoLogin').innerText = data.mensaje;
+            })
+            .catch(err => console.error(err));
+        }
+    </script>
+</body>
+</html>
