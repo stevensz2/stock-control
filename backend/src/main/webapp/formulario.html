@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registro de Producto</title>
+</head>
+<body>
+	<h1>Registro de Producto</h1>
+	<form action="ProductoServlet" method="post">
+		<label for="codigo">Código:</label><br>
+		<input type="text" id="codigo" name="codigo" required><br><br>
+
+		<label for="nombre">Nombre del producto:</label><br>
+		<input type="text" id="nombre" name="nombre" required><br><br>
+
+		<label for="descripcion">Descripción:</label><br>
+		<input type="text" id="descripcion" name="descripcion"><br><br>
+
+		<label for="precioCompra">Precio de compra:</label><br>
+		<input type="number" id="precioCompra" name="precioCompra" step="0.01" required><br><br>
+
+		<label for="precioVenta">Precio de venta:</label><br>
+		<input type="number" id="precioVenta" name="precioVenta" step="0.01" required><br><br>
+
+		<label for="stockActual">Stock actual:</label><br>
+		<input type="number" id="stockActual" name="stockActual" required><br><br>
+
+		<label for="stockMinimo">Stock mínimo:</label><br>
+		<input type="number" id="stockMinimo" name="stockMinimo" value="5"><br><br>
+
+		<label for="idCategoria">ID Categoría (opcional):</label><br>
+		<input type="number" id="idCategoria" name="idCategoria"><br><br>
+
+		<button type="submit">Guardar Producto</button>
+	</form>
+</body>
+</html>

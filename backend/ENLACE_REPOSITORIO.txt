@@ -1,0 +1,6 @@
+Evidencia GA7-220501096-AA3-EV01 / EV02
+Aprendiz: Steven Diaz Morales
+Proyecto: Stock Control - módulo GestionProductos
+
+Repositorio en GitHub:
+https://github.com/stevensz2/GestionProductos.git
